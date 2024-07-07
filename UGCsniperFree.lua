@@ -206,8 +206,7 @@ end
 				end)
 
 
-
-
+local actic = false
 
 				main:Toggle("Auto Close Error", false, function(bool)
 					actic = bool
