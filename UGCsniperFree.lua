@@ -11,7 +11,6 @@ local getnamecallmethod = get_namecall_method or getnamecallmethod
 local setnamecallmethod = set_namecall_method or setnamecallmethod
 local restorefunction = restorefunction or restoreclosure or restorefunc
 
--- // cloneref function for exploits that dont support it
 local a = Instance.new("Part")
 for b, c in pairs(getreg()) do
 	if type(c) == "table" and #c then
@@ -211,22 +210,27 @@ end
 
 
 				main:Toggle("Auto Close Error", false, function(bool)
-					loopActive = bool
-					spawn(function()
-						while bool == true do
-							local pp = game.CoreGui.PurchasePrompt.ProductPurchaseContainer.Animator:FindFirstChild("Prompt")
-							if pp and pp.AlertContents and pp.AlertContents.Footer and pp.AlertContents.Footer.Buttons and not pp.AlertContents.Footer.Buttons:FindFirstChild("1") then
-								if pp.AlertContents.Footer.Buttons:FindFirstChild("1") then
-									local b1 = pp.AlertContents.Footer.Buttons[1].AbsolutePosition
-									game:GetService("VirtualInputManager"):SendMouseButtonEvent(b1.X + 55, b1.Y + 65.5, 0, true, game, 1)
-									wait()
-									game:GetService("VirtualInputManager"):SendMouseButtonEvent(b1.X + 55, b1.Y + 65.5, 0, false, game, 1)
-								end
-							end
-							wait()
-						end
-					end)
-				end)
+					actic = bool
+	if actic then
+		while actic do
+			local pp = game.CoreGui.PurchasePrompt.ProductPurchaseContainer.Animator:FindFirstChild("Prompt")
+			if pp and pp.AlertContents and pp.AlertContents.Footer and pp.AlertContents.Footer.Buttons and not pp.AlertContents.Footer.Buttons:FindFirstChild("2") then
+				if pp.AlertContents.Footer.Buttons:FindFirstChild("1") then
+					local b1 = pp.AlertContents.Footer.Buttons[1].AbsolutePosition
+					game:GetService("VirtualInputManager"):SendMouseButtonEvent(b1.X + 55, b1.Y + 65.5, 0, true, game, 1)
+					wait()
+					game:GetService("VirtualInputManager"):SendMouseButtonEvent(b1.X + 55, b1.Y + 65.5, 0, false, game, 1)
+				end
+			end
+			wait()
+			
+			if actic == false then
+				break
+			end
+			
+		end
+	end
+end)
 				main:Toggle("Anti Afk", false, function(bool)
 					if bool == true then
 						Players.LocalPlayer.Idled:connect(function()
